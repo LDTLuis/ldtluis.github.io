@@ -1,0 +1,70 @@
+.band {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 26px 0;
+  border-block: 1px solid var(--line);
+  background: var(--bg-2);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.band:hover .track {
+  animation-play-state: paused;
+}
+
+/* padding-right em vez de gap: as duas metades ficam idênticas e o -50% fecha o loop sem salto */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 2.4vw, 30px);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.diamond {
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 767px) {
+  .band {
+    padding: 18px 0;
+  }
+
+  .item {
+    gap: 32px;
+    padding-right: 32px;
+  }
+
+  .diamond {
+    width: 7px;
+    height: 7px;
+  }
+
+  .track {
+    animation-duration: 32s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
