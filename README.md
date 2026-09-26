@@ -1,40 +1,72 @@
-# Portfólio · Luis Borges
+# Luis Borges Portfolio - Personal Website and Case Study
 
-**🔗 [portfolio-luis-borges.vercel.app](https://portfolio-luis-borges.vercel.app)**
+🔗 **Live site:** [portfolio-luis-borges.vercel.app](https://portfolio-luis-borges.vercel.app)
 
-Portfólio pessoal de Luis Borges, desenvolvedor full stack com foco em Java e React. O site está em português e inglês e reúne apresentação, competências, projetos e contato.
+🇧🇷 [Leia em português](README-pt.md)
 
-## Páginas
+## Description
 
-- [Início](https://portfolio-luis-borges.vercel.app): apresentação, sobre, competências, projeto em destaque e contato.
-- [Estudo de caso do Spa Casa Bali](https://portfolio-luis-borges.vercel.app/estudo-de-caso/spa-casa-bali/): contexto, arquitetura, desafios técnicos e telas de uma plataforma de agendamento online, pagamentos e vale-presente em produção em [spacasabali.com](https://spacasabali.com).
+This is the personal portfolio of Luis Borges, a full stack developer focused on Java and React. The website presents his **profile**, **skills**, **featured project** and **contact channels**, and is fully available in **Portuguese and English**.
 
-## Tecnologias
+The portfolio also includes a **case study** of the Spa Casa Bali, an online booking, payment and gift card platform live in production at [spacasabali.com](https://spacasabali.com). The case study covers the context, the architecture, the technical challenges and screenshots of the product in use.
 
-- React 19 e TypeScript
-- Vite, com uma entrada HTML por página
-- Motion para as animações
-- CSS Modules
-- Hospedagem na Vercel
+## Technologies Used
 
-## Rodando localmente
+* **Language:** TypeScript
+* **Library:** React 19
+* **Build Tool:** Vite
+* **Animations:** Motion
+* **Styling:** CSS Modules
+* **Fonts:** Fontsource (Sora, Manrope and JetBrains Mono, self-hosted)
+* **Hosting:** Vercel
 
-Requer Node 20 ou mais novo.
+## Adopted Practices
 
-```bash
-npm install
-npm run dev
-```
+* **Typed Internationalization:** all texts live in a single dictionary, and the English version must have exactly the same keys as the Portuguese one, checked by TypeScript
+* **Language Detection:** the site opens in the visitor's browser language and remembers their choice
+* **Multi-Page Build:** each page is its own HTML entry, so it works on any static host without routing rules
+* **Accessibility:** semantic HTML, skip link, keyboard navigation and descriptive labels for screen readers
+* **Reduced Motion:** animations respect the operating system's "reduce motion" setting
+* **Responsive Design:** layouts adapted to desktop and mobile screens
+* **Reusable Components:** shared pieces such as the device preview, section headings and reveal animations
+* **Optimized Assets:** screenshots in WebP and fonts served from the site itself
 
-| Comando | O que faz |
-|---|---|
-| `npm run dev` | servidor de desenvolvimento em `http://localhost:5173` |
-| `npm run tipos` | checagem de tipos |
-| `npm run build` | checa os tipos e gera o site em `dist/` |
-| `npm run preview` | serve o conteúdo de `dist/` |
+## Features
 
-## Onde mexer
+* **Language Switch:** Portuguese and English, available on every page
+* **Resume Download:** resume in PDF, in Portuguese or English
+* **Project Preview:** desktop and mobile screenshots of the featured project
+* **Case Study Page:** a detailed write-up of the Spa Casa Bali project
+* **Contact Section:** email, GitHub and LinkedIn
 
-- Textos em português e inglês: `src/i18n/translations.ts`
-- Contatos, links, currículos e dados do projeto: `src/data/site.ts`
-- Prints do projeto e currículos em PDF: `public/`
+## How to Run
+
+1.  **Prerequisites:**
+    * Node.js 20 or higher.
+
+2.  **Execution:**
+    * Clone the repository.
+    * Navigate to the project's root directory in a terminal.
+    * Install the dependencies and start the development server:
+        ```bash
+        npm install
+        npm run dev
+        ```
+    * The website will be available in your browser at `http://localhost:5173`.
+
+3.  **Available Scripts:**
+    * **`npm run dev`**: Starts the development server.
+    * **`npm run tipos`**: Runs the TypeScript type check.
+    * **`npm run build`**: Checks types and generates the production build in `dist/`.
+    * **`npm run preview`**: Serves the production build locally.
+
+## Pages
+
+* **[`/`](https://portfolio-luis-borges.vercel.app)**: Home page with the introduction, about, skills, featured project and contact sections.
+* **[`/estudo-de-caso/spa-casa-bali/`](https://portfolio-luis-borges.vercel.app/estudo-de-caso/spa-casa-bali/)**: Spa Casa Bali case study.
+
+## Where to Edit the Content
+
+* **`src/i18n/translations.ts`**: All texts, in Portuguese and English.
+* **`src/data/site.ts`**: Contact details, links, resumes and project data.
+* **`public/`**: Project screenshots and resume PDFs.
