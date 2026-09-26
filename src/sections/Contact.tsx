@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Icon, type IconName } from '../components/Icon';
-import { Reveal } from '../components/Reveal';
+import { Reveal, reveal } from '../components/Reveal';
 import { displayUrl, profile } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
 import styles from './Contact.module.css';
@@ -11,7 +11,6 @@ type ContactLink = {
   meta: string;
   href: string;
   external?: boolean;
-  download?: boolean;
 };
 
 export function Contact() {
@@ -28,7 +27,6 @@ export function Contact() {
       href: profile.linkedin,
       external: true,
     },
-    { icon: 'file', label: t.resume, meta: t.contact.resumeMeta, href: profile.resumeUrl, download: true },
   ];
 
   return (
@@ -63,18 +61,11 @@ export function Contact() {
 
         <ul className={styles.links}>
           {links.map((link, i) => (
-            <motion.li
-              key={link.icon}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: i * 0.06, ease: [0.2, 0.7, 0.2, 1] }}
-            >
+            <motion.li key={link.icon} {...reveal(i * 0.06)}>
               <a
                   href={link.href}
                   className={styles.linkCard}
                   {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                  {...(link.download ? { download: true } : {})}
                 >
                   <span className={styles.linkMain}>
                     <span className={styles.linkIcon}>
@@ -85,16 +76,39 @@ export function Contact() {
                       <span className={styles.linkMeta}>{link.meta}</span>
                     </span>
                   </span>
-                  <Icon
-                    name={link.download ? 'download' : 'arrowUpRight'}
-                    size={18}
-                    strokeWidth={2}
-                    className={styles.linkArrow}
-                  />
+                  <Icon name="arrowUpRight" size={18} strokeWidth={2} className={styles.linkArrow} />
                   {link.external && <span className="sr-only">{t.a11y.newTab}</span>}
                 </a>
             </motion.li>
           ))}
+          <motion.li {...reveal(links.length * 0.06)}>
+            <div className={`${styles.linkCard} ${styles.resumeCard}`}>
+              <span className={styles.linkMain}>
+                <span className={styles.linkIcon}>
+                  <Icon name="file" size={22} />
+                </span>
+                <span className={styles.linkText}>
+                  <span className={styles.linkLabel}>{t.resume}</span>
+                  <span className={styles.linkMeta}>{t.contact.resumeMeta}</span>
+                </span>
+              </span>
+              <span className={styles.resumeLinks}>
+                {profile.resumes.map((resume) => (
+                  <a
+                    key={resume.lang}
+                    href={resume.href}
+                    download={resume.fileName}
+                    hrefLang={resume.lang}
+                    className={styles.resumeLink}
+                    aria-label={`${t.a11y.resumeIn} ${resume.label}`}
+                  >
+                    {resume.short}
+                    <Icon name="download" size={14} strokeWidth={2} />
+                  </a>
+                ))}
+              </span>
+            </div>
+          </motion.li>
         </ul>
 
         <div className={styles.bottom}>

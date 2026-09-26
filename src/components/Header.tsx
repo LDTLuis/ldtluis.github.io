@@ -5,6 +5,7 @@ import { useActiveSection } from '../hooks/useActiveSection';
 import { useI18n } from '../i18n/LanguageProvider';
 import { Icon } from './Icon';
 import { LanguageSwitch } from './LanguageSwitch';
+import { ResumeMenu } from './ResumeMenu';
 import styles from './Header.module.css';
 
 const SECTION_IDS = navItems.map((item) => item.id);
@@ -81,10 +82,7 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <a href={profile.resumeUrl} className={styles.resume} download>
-            <Icon name="download" size={16} strokeWidth={2} />
-            {t.resume}
-          </a>
+          <ResumeMenu className={styles.resumeMenu} triggerClassName={styles.resume} />
           <LanguageSwitch />
           <button
             type="button"
@@ -131,10 +129,24 @@ export function Header() {
                   <Icon name="arrowRight" size={20} strokeWidth={2} />
                 </a>
               ))}
-              <a href={profile.resumeUrl} className={`btn btn-outline ${styles.mobileResume}`} download onClick={closeMenu}>
-                <Icon name="download" size={16} strokeWidth={2} />
-                {t.resume}
-              </a>
+              <div className={styles.mobileResumes}>
+                <p className={styles.mobileResumeTitle}>{t.resume}</p>
+                <div className={styles.mobileResumeRow}>
+                  {profile.resumes.map((resume) => (
+                    <a
+                      key={resume.lang}
+                      href={resume.href}
+                      download={resume.fileName}
+                      hrefLang={resume.lang}
+                      className={`btn btn-outline ${styles.mobileResume}`}
+                      onClick={closeMenu}
+                    >
+                      <Icon name="download" size={16} strokeWidth={2} />
+                      {resume.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </motion.nav>
           </>
         )}

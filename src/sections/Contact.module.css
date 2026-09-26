@@ -199,6 +199,53 @@
   .linkCard:hover .linkArrow {
     color: var(--accent);
   }
+
+  /* O cartão do currículo não é um link: quem reage ao mouse são os botões PT/EN. */
+  .resumeCard:hover {
+    transform: none;
+    border-color: var(--line);
+    box-shadow: none;
+  }
+
+  .resumeLink:hover {
+    border-color: var(--accent-line);
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+}
+
+/* Sem espaço para rótulo e botões na mesma linha, os botões descem. */
+.resumeCard {
+  flex-wrap: wrap;
+  row-gap: 14px;
+}
+
+.resumeCard .linkMain {
+  flex: 1 0 auto;
+}
+
+.resumeLinks {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.resumeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line-3);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .bottom {

@@ -9,7 +9,11 @@ export const profile = {
   email: 'proff0lfob@gmail.com',
   github: 'https://github.com/LDTLuis',
   linkedin: 'https://www.linkedin.com/in/lfobproff',
-  resumeUrl: '/curriculo.pdf', // TODO: coloque o PDF em public/curriculo.pdf
+  /** Currículo em PDF por idioma (arquivos em public/); o nome do idioma fica no próprio idioma. */
+  resumes: [
+    { lang: 'pt', short: 'PT', label: 'Português', href: '/curriculo-luis-borges-pt.pdf', fileName: 'Currículo - Luis Borges.pdf' },
+    { lang: 'en', short: 'EN', label: 'English', href: '/resume-luis-borges-en.pdf', fileName: 'Resume - Luis Borges.pdf' },
+  ] as const,
   photoUrl: null as string | null, // TODO: ex. '/foto.jpg' (arquivo em public/)
   mainStack: 'Java · Spring · React · TS',
 };

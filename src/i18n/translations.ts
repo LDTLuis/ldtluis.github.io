@@ -15,6 +15,7 @@ const pt = {
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
     newTab: '(abre em nova aba)',
+    resumeIn: 'Baixar currículo em',
   },
   nav: {
     home: 'Início',
@@ -294,6 +295,7 @@ const en: Dictionary = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     newTab: '(opens in a new tab)',
+    resumeIn: 'Download resume in',
   },
   nav: {
     home: 'Home',

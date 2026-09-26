@@ -33,6 +33,7 @@ const paths = {
       <path d="m12 5 7 7-7 7" />
     </>
   ),
+  chevronDown: <path d="m6 9 6 6 6-6" />,
   arrowLeft: (
     <>
       <path d="M19 12H5" />
