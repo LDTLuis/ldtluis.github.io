@@ -102,15 +102,10 @@ export function Hero() {
           {...tilt.handlers}
         >
           <motion.div className={styles.card} style={tilt.style}>
-            <div className={styles.photo}>
-              {profile.photoUrl ? (
-                <img src={profile.photoUrl} alt={profile.name} />
-              ) : (
-                <>
-                  <Icon name="user" size={60} strokeWidth={1.4} />
-                  <span className={styles.photoLabel}>{t.hero.photo}</span>
-                </>
-              )}
+            <div className={styles.cardTop}>
+              <span className={styles.monogram} aria-hidden="true">
+                {profile.initials}
+              </span>
               <p className={styles.badge}>
                 <span className={styles.pulse} aria-hidden="true" />
                 {t.hero.available}

@@ -31,7 +31,6 @@ const pt = {
     and: 'e',
     lead: 'Desenvolvo aplicações web de ponta a ponta, com arquitetura bem definida, código sustentável e atenção à experiência do usuário, do planejamento à publicação em produção.',
     cta: 'Ver projetos',
-    photo: 'Sua foto',
     available: 'Disponível para oportunidades',
     rows: {
       role: 'Atuação',
@@ -311,7 +310,6 @@ const en: Dictionary = {
     and: 'and',
     lead: 'I build end-to-end web applications with a well-defined architecture, maintainable code and a strong focus on user experience, from planning all the way to production.',
     cta: 'View projects',
-    photo: 'Your photo',
     available: 'Open to opportunities',
     rows: {
       role: 'Role',

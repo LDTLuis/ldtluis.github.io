@@ -14,7 +14,6 @@ export const profile = {
     { lang: 'pt', short: 'PT', label: 'Português', href: '/curriculo-luis-borges-pt.pdf', fileName: 'Currículo - Luis Borges.pdf' },
     { lang: 'en', short: 'EN', label: 'English', href: '/resume-luis-borges-en.pdf', fileName: 'Resume - Luis Borges.pdf' },
   ] as const,
-  photoUrl: null as string | null, // TODO: ex. '/foto.jpg' (arquivo em public/)
   mainStack: 'Java · Spring · React · TS',
 };
 
