@@ -82,13 +82,12 @@
 .cardWrap {
   position: relative;
   justify-self: end;
-  width: 540px;
+  width: 470px;
   max-width: 100%;
   perspective: 1200px;
 }
 
 .card {
-  margin-left: 70px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 28px;
@@ -184,52 +183,6 @@
   text-align: right;
 }
 
-.live {
-  position: absolute;
-  left: 0;
-  top: 30%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px 14px 14px;
-  border: 1px solid var(--line-2);
-  border-radius: 16px;
-  background: var(--bg);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  color: var(--text);
-}
-
-.liveIcon {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--accent-line);
-  border-radius: 12px;
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-.liveText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.liveLabel {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--subtle);
-}
-
-.liveName {
-  font-size: 15px;
-  font-weight: 600;
-}
-
 @media (max-width: 1023px) {
   .hero {
     padding: 112px 0 56px;
@@ -247,37 +200,7 @@
   }
 
   .card {
-    margin-left: 0;
     border-radius: 24px;
-  }
-
-  .live {
-    left: 16px;
-    top: 16px;
-    gap: 10px;
-    padding: 8px 12px 8px 8px;
-    border-radius: 12px;
-    background: rgba(10, 17, 14, 0.92);
-    box-shadow: none;
-  }
-
-  .liveIcon {
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
-  }
-
-  .liveIcon svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .liveLabel {
-    font-size: 10px;
-  }
-
-  .liveName {
-    font-size: 13px;
   }
 }
 

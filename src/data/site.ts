@@ -6,9 +6,9 @@ import type { Dictionary } from '../i18n/translations';
 export const profile = {
   name: 'Luis Borges',
   initials: 'LB',
-  email: 'seu@email.com', // TODO: seu e-mail
-  github: 'https://github.com/usuario', // TODO: seu GitHub
-  linkedin: 'https://www.linkedin.com/in/usuario', // TODO: seu LinkedIn
+  email: 'proff0lfob@gmail.com',
+  github: 'https://github.com/LDTLuis',
+  linkedin: 'https://www.linkedin.com/in/lfobproff',
   resumeUrl: '/curriculo.pdf', // TODO: coloque o PDF em public/curriculo.pdf
   photoUrl: null as string | null, // TODO: ex. '/foto.jpg' (arquivo em public/)
   mainStack: 'Java · Spring · React · TS',
@@ -48,12 +48,18 @@ export const featuredProject = {
   name: 'Spa Casa Bali',
   url: 'https://spacasabali.com',
   domain: 'spacasabali.com',
+  caseStudyUrl: '/estudo-de-caso/spa-casa-bali/',
   year: 2026,
   stack: ['Java', 'Spring Boot', 'PostgreSQL', 'React', 'TypeScript', 'Vite', 'Railway'],
   screenshots: {
-    desktop: null as string | null, // TODO: print do site em desktop
-    mobile: null as string | null, // TODO: print do site no celular
+    desktop: '/projetos/spa-casa-bali-desktop.webp' as string | null,
+    mobile: '/projetos/spa-casa-bali-mobile.webp' as string | null,
   },
+  /** Telas do estudo de caso; `key` aponta para a legenda em t.caseStudy.gallery. */
+  gallery: [
+    { key: 'catalog', src: '/projetos/spa-casa-bali-catalogo.webp' },
+    { key: 'club', src: '/projetos/spa-casa-bali-club-de-horas.webp' },
+  ] as const,
 };
 
 /** "https://github.com/usuario" → "github.com/usuario" */

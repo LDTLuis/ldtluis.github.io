@@ -1,5 +1,4 @@
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
-import { useRef } from 'react';
+import { DevicePreview } from '../components/DevicePreview';
 import { Icon } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
@@ -9,11 +8,6 @@ import styles from './Project.module.css';
 
 export function Project() {
   const { t } = useI18n();
-  const previewRef = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: previewRef, offset: ['start end', 'end start'] });
-  // O celular sobe um pouco mais rápido que a janela do navegador (paralaxe).
-  const phoneY = useTransform(scrollYProgress, [0, 1], [48, -48]);
 
   return (
     <section id="projetos" className={styles.projects} aria-labelledby="projetos-titulo">
@@ -43,65 +37,18 @@ export function Project() {
                   {t.project.visit}
                   <span className="sr-only">{t.a11y.newTab}</span>
                 </a>
-                {/* TODO: apontar para a página do estudo de caso quando existir */}
-                <a href="#projetos" className="btn btn-outline btn-sm">
+                <a href={project.caseStudyUrl} className="btn btn-outline btn-sm">
                   {t.project.caseStudy}
                 </a>
               </div>
             </header>
 
-            <div ref={previewRef} className={styles.preview}>
-              <div className={styles.browser}>
-                <div className={styles.browserBar}>
-                  <span className={styles.dots} aria-hidden="true">
-                    <span />
-                    <span />
-                    <span />
-                  </span>
-                  <span className={styles.url}>
-                    <Icon name="lock" size={12} strokeWidth={2} />
-                    {project.domain}
-                  </span>
-                </div>
-                <div className={styles.screen}>
-                  {project.screenshots.desktop ? (
-                    <img src={project.screenshots.desktop} alt={`${t.project.screenshot} · ${project.name}`} loading="lazy" />
-                  ) : (
-                    <>
-                      <div className={styles.wfTop} aria-hidden="true">
-                        <span />
-                        <span className={styles.wfNav}>
-                          <span />
-                          <span />
-                          <span />
-                        </span>
-                      </div>
-                      <div className={styles.wfHero}>{t.project.screenshot} · Desktop</div>
-                      <div className={styles.wfCards} aria-hidden="true">
-                        <span />
-                        <span />
-                        <span />
-                        <span />
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              <motion.div className={styles.phone} style={reduceMotion ? undefined : { y: phoneY }}>
-                <div className={styles.phoneScreen}>
-                  {project.screenshots.mobile ? (
-                    <img src={project.screenshots.mobile} alt={`${t.project.screenshot} · Mobile`} loading="lazy" />
-                  ) : (
-                    <>
-                      <span className={styles.notch} aria-hidden="true" />
-                      <div className={styles.phoneHero}>Mobile</div>
-                      <span className={styles.phoneCta} aria-hidden="true" />
-                    </>
-                  )}
-                </div>
-              </motion.div>
-            </div>
+            <DevicePreview
+              domain={project.domain}
+              desktop={project.screenshots.desktop}
+              mobile={project.screenshots.mobile}
+              label={t.project.screenshot}
+            />
 
             <div className={styles.details}>
               <div className={styles.detail}>

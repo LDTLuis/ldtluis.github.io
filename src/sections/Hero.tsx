@@ -132,21 +132,6 @@ export function Hero() {
               </div>
             </dl>
           </motion.div>
-
-          <motion.a
-            href="#projetos"
-            className={styles.live}
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <span className={styles.liveIcon}>
-              <Icon name="globe" />
-            </span>
-            <span className={styles.liveText}>
-              <span className={styles.liveLabel}>{t.hero.live}</span>
-              <span className={styles.liveName}>Spa Casa Bali</span>
-            </span>
-          </motion.a>
         </motion.div>
       </div>
     </section>

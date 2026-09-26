@@ -1,0 +1,45 @@
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--line-3);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .back:hover {
+    border-color: var(--accent-line);
+    background: var(--surface);
+  }
+}
+
+@media (max-width: 1023px) {
+  .back {
+    height: 44px;
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 559px) {
+  .back {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .backLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}

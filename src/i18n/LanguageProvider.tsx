@@ -3,6 +3,9 @@ import { dictionaries, type Dictionary, type Lang } from './translations';
 
 const STORAGE_KEY = 'idioma';
 
+/** Título da aba em cada idioma; sem ele, vale o título do portfólio. */
+export type PageTitle = (t: Dictionary) => string;
+
 type LanguageContextValue = {
   lang: Lang;
   t: Dictionary;
@@ -23,7 +26,7 @@ function detectLanguage(): Lang {
   return browserLangs.some((l) => l.toLowerCase().startsWith('pt')) ? 'pt' : 'en';
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({ children, title }: { children: ReactNode; title?: PageTitle }) {
   const [lang, setLangState] = useState<Lang>(detectLanguage);
   const t = dictionaries[lang];
 
@@ -38,8 +41,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
-    document.title = t.meta.title;
-  }, [lang, t]);
+    document.title = title ? title(t) : t.meta.title;
+  }, [lang, t, title]);
 
   const value = useMemo(() => ({ lang, t, setLang }), [lang, t, setLang]);
 
