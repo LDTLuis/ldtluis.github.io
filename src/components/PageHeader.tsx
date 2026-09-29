@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { profile } from '../data/site';
+import { base, profile } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
 import { Icon } from './Icon';
 import { LanguageSwitch } from './LanguageSwitch';
@@ -21,7 +21,7 @@ export function PageHeader({ backLabel }: { backLabel: string }) {
   return (
     <header className={`${header.header} ${scrolled ? header.solid : ''}`}>
       <div className={header.inner}>
-        <a href="/" className={header.brand} aria-label={t.a11y.home}>
+        <a href={base} className={header.brand} aria-label={t.a11y.home}>
           <span className={header.mark} aria-hidden="true">
             {profile.initials}
           </span>
@@ -29,7 +29,7 @@ export function PageHeader({ backLabel }: { backLabel: string }) {
         </a>
 
         <div className={header.actions}>
-          <a href="/#projetos" className={styles.back}>
+          <a href={`${base}#projetos`} className={styles.back}>
             <Icon name="arrowLeft" size={16} strokeWidth={2} />
             <span className={styles.backLabel}>{backLabel}</span>
           </a>

@@ -1,6 +1,6 @@
 # Luis Borges Portfolio - Personal Website and Case Study
 
-🔗 **Live site:** [portfolio-luis-borges.vercel.app](https://portfolio-luis-borges.vercel.app)
+🔗 **Live site:** [ldtluis.github.io/portfolio-luis-borges](https://ldtluis.github.io/portfolio-luis-borges/)
 
 🇧🇷 [Leia em português](README-pt.md)
 
@@ -18,7 +18,7 @@ The portfolio also includes a **case study** of the Spa Casa Bali, an online boo
 * **Animations:** Motion
 * **Styling:** CSS Modules
 * **Fonts:** Fontsource (Sora, Manrope and JetBrains Mono, self-hosted)
-* **Hosting:** Vercel
+* **Hosting:** GitHub Pages (GitHub Actions)
 
 ## Adopted Practices
 
@@ -62,8 +62,8 @@ The portfolio also includes a **case study** of the Spa Casa Bali, an online boo
 
 ## Pages
 
-* **[`/`](https://portfolio-luis-borges.vercel.app)**: Home page with the introduction, about, skills, featured project and contact sections.
-* **[`/estudo-de-caso/spa-casa-bali/`](https://portfolio-luis-borges.vercel.app/estudo-de-caso/spa-casa-bali/)**: Spa Casa Bali case study.
+* **[`/`](https://ldtluis.github.io/portfolio-luis-borges/)**: Home page with the introduction, about, skills, featured project and contact sections.
+* **[`/estudo-de-caso/spa-casa-bali/`](https://ldtluis.github.io/portfolio-luis-borges/estudo-de-caso/spa-casa-bali/)**: Spa Casa Bali case study.
 
 ## Where to Edit the Content
 

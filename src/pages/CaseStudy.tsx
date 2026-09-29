@@ -5,7 +5,7 @@ import { Icon } from '../components/Icon';
 import { PageHeader } from '../components/PageHeader';
 import { Reveal, reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
-import { featuredProject as project } from '../data/site';
+import { base, featuredProject as project } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
 import { Contact } from '../sections/Contact';
 import styles from './CaseStudy.module.css';
@@ -256,7 +256,7 @@ export function CaseStudy() {
                 {cs.cta.visit}
                 <span className="sr-only">{t.a11y.newTab}</span>
               </a>
-              <a href="/#projetos" className="btn btn-outline">
+              <a href={`${base}#projetos`} className="btn btn-outline">
                 <Icon name="arrowLeft" size={18} strokeWidth={2} />
                 {cs.back}
               </a>

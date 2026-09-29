@@ -1,5 +1,8 @@
 import type { Dictionary } from '../i18n/translations';
 
+/** Endereço base do site: '/' no dev e '/portfolio-luis-borges/' no GitHub Pages. */
+export const base = import.meta.env.BASE_URL;
+
 /**
  * Dados pessoais e links. Troque os valores marcados com TODO pelos seus.
  */
@@ -11,8 +14,8 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/lfobproff',
   /** Currículo em PDF por idioma (arquivos em public/); o nome do idioma fica no próprio idioma. */
   resumes: [
-    { lang: 'pt', short: 'PT', label: 'Português', href: '/curriculo-luis-borges-pt.pdf', fileName: 'Currículo - Luis Borges.pdf' },
-    { lang: 'en', short: 'EN', label: 'English', href: '/resume-luis-borges-en.pdf', fileName: 'Resume - Luis Borges.pdf' },
+    { lang: 'pt', short: 'PT', label: 'Português', href: `${base}curriculo-luis-borges-pt.pdf`, fileName: 'Currículo - Luis Borges.pdf' },
+    { lang: 'en', short: 'EN', label: 'English', href: `${base}resume-luis-borges-en.pdf`, fileName: 'Resume - Luis Borges.pdf' },
   ] as const,
   mainStack: 'Java · Spring · React · TS',
 };
@@ -56,17 +59,17 @@ export const featuredProject = {
   name: 'Spa Casa Bali',
   url: 'https://spacasabali.com',
   domain: 'spacasabali.com',
-  caseStudyUrl: '/estudo-de-caso/spa-casa-bali/',
+  caseStudyUrl: `${base}estudo-de-caso/spa-casa-bali/`,
   year: 2026,
   stack: ['Java', 'Spring Boot', 'PostgreSQL', 'React', 'TypeScript', 'Vite', 'Railway'],
   screenshots: {
-    desktop: '/projetos/spa-casa-bali-desktop.webp' as string | null,
-    mobile: '/projetos/spa-casa-bali-mobile.webp' as string | null,
+    desktop: `${base}projetos/spa-casa-bali-desktop.webp` as string | null,
+    mobile: `${base}projetos/spa-casa-bali-mobile.webp` as string | null,
   },
   /** Telas do estudo de caso; `key` aponta para a legenda em t.caseStudy.gallery. */
   gallery: [
-    { key: 'catalog', src: '/projetos/spa-casa-bali-catalogo.webp' },
-    { key: 'club', src: '/projetos/spa-casa-bali-club-de-horas.webp' },
+    { key: 'catalog', src: `${base}projetos/spa-casa-bali-catalogo.webp` },
+    { key: 'club', src: `${base}projetos/spa-casa-bali-club-de-horas.webp` },
   ] as const,
 };
 
