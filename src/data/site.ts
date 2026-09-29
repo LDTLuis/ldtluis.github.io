@@ -1,6 +1,6 @@
 import type { Dictionary } from '../i18n/translations';
 
-/** Endereço base do site: '/' no dev e '/portfolio-luis-borges/' no GitHub Pages. */
+/** Endereço base do site: '/' tanto no dev quanto no GitHub Pages. */
 export const base = import.meta.env.BASE_URL;
 
 /**

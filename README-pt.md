@@ -1,6 +1,6 @@
 # Portfólio Luis Borges - Site Pessoal e Estudo de Caso
 
-🔗 **Site no ar:** [ldtluis.github.io/portfolio-luis-borges](https://ldtluis.github.io/portfolio-luis-borges/)
+🔗 **Site no ar:** [ldtluis.github.io](https://ldtluis.github.io/)
 
 🇺🇸 [Read in English](README.md)
 
@@ -62,8 +62,8 @@ O portfólio também traz um **estudo de caso** do Spa Casa Bali, plataforma de 
 
 ## Páginas
 
-* **[`/`](https://ldtluis.github.io/portfolio-luis-borges/)**: Página inicial com as seções de apresentação, sobre, competências, projeto em destaque e contato.
-* **[`/estudo-de-caso/spa-casa-bali/`](https://ldtluis.github.io/portfolio-luis-borges/estudo-de-caso/spa-casa-bali/)**: Estudo de caso do Spa Casa Bali.
+* **[`/`](https://ldtluis.github.io/)**: Página inicial com as seções de apresentação, sobre, competências, projeto em destaque e contato.
+* **[`/estudo-de-caso/spa-casa-bali/`](https://ldtluis.github.io/estudo-de-caso/spa-casa-bali/)**: Estudo de caso do Spa Casa Bali.
 
 ## Onde Editar o Conteúdo
 
