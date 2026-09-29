@@ -7,6 +7,7 @@ import {
   type Variants,
 } from 'motion/react';
 import type { PointerEvent } from 'react';
+import { EmailMenu } from '../components/EmailMenu';
 import { Icon } from '../components/Icon';
 import { profile } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
@@ -81,9 +82,7 @@ export function Hero() {
             </a>
             <span className={styles.divider} aria-hidden="true" />
             <div className={styles.socials}>
-              <a href={`mailto:${profile.email}`} className="icon-btn" aria-label={t.contact.email}>
-                <Icon name="mail" />
-              </a>
+              <EmailMenu triggerClassName="icon-btn" />
               <a href={profile.github} className="icon-btn" aria-label={`GitHub ${t.a11y.newTab}`} target="_blank" rel="noreferrer">
                 <Icon name="github" />
               </a>

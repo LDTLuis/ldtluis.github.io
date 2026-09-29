@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useId, useRef, useState } from 'react';
 import { profile } from '../data/site';
+import { useDismiss } from '../hooks/useDismiss';
 import { useI18n } from '../i18n/LanguageProvider';
 import { Icon } from './Icon';
 import styles from './ResumeMenu.module.css';
@@ -12,25 +13,8 @@ export function ResumeMenu({ className = '', triggerClassName = '' }: { classNam
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
-
-  // Aberto: fecha ao clicar fora ou com Esc (devolvendo o foco ao botão).
-  useEffect(() => {
-    if (!open) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      setOpen(false);
-      triggerRef.current?.focus();
-    };
-    document.addEventListener('pointerdown', onPointerDown);
-    document.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.removeEventListener('pointerdown', onPointerDown);
-      document.removeEventListener('keydown', onKeyDown);
-    };
-  }, [open]);
+  const close = useCallback(() => setOpen(false), []);
+  useDismiss(open, close, rootRef, triggerRef);
 
   return (
     <div ref={rootRef} className={`${styles.root} ${className}`}>

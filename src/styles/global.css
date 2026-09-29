@@ -177,7 +177,12 @@ img {
   height: 56px;
   border: 1px solid var(--line);
   border-radius: 14px;
+  padding: 0;
+  /* Também é usado em <button>: tira o fundo cinza padrão do navegador. */
+  background: none;
   color: var(--muted);
+  font: inherit;
+  cursor: pointer;
   transition:
     transform 0.2s var(--ease-out),
     border-color 0.2s ease,

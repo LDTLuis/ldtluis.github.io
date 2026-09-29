@@ -292,6 +292,11 @@ const pt = {
       },
     ],
     email: 'E-mail',
+    copy: 'Copiar',
+    copied: 'Copiado',
+    copyEmail: 'Copiar e-mail',
+    emailCopied: 'E-mail copiado',
+    sendEmail: 'Enviar e-mail',
     resumeMeta: 'PDF',
   },
   footer: {
@@ -588,6 +593,11 @@ const en: Dictionary = {
       },
     ],
     email: 'Email',
+    copy: 'Copy',
+    copied: 'Copied',
+    copyEmail: 'Copy email',
+    emailCopied: 'Email copied',
+    sendEmail: 'Send email',
     resumeMeta: 'PDF',
   },
   footer: {

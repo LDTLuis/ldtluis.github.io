@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { CopyEmailButton } from '../components/CopyEmailButton';
 import { Icon, type IconName } from '../components/Icon';
 import { Reveal, reveal } from '../components/Reveal';
 import { displayUrl, profile } from '../data/site';
@@ -11,6 +12,8 @@ type ContactLink = {
   meta: string;
   href: string;
   external?: boolean;
+  /** Mostra o botão de copiar o e-mail no cartão. */
+  copyable?: boolean;
 };
 
 export function Contact() {
@@ -18,7 +21,7 @@ export function Contact() {
   const year = new Date().getFullYear();
 
   const links: ContactLink[] = [
-    { icon: 'mail', label: t.contact.email, meta: profile.email, href: `mailto:${profile.email}` },
+    { icon: 'mail', label: t.contact.email, meta: profile.email, href: `mailto:${profile.email}`, copyable: true },
     { icon: 'github', label: 'GitHub', meta: displayUrl(profile.github), href: profile.github, external: true },
     {
       icon: 'linkedin',
@@ -44,10 +47,13 @@ export function Contact() {
             <span className={styles.outline}>{t.contact.titleB}</span>
           </h2>
           <p className={styles.text}>{t.contact.text}</p>
-          <a href={`mailto:${profile.email}`} className={styles.emailLink}>
-            {profile.email}
-            <Icon name="arrowUpRight" size={22} strokeWidth={2} />
-          </a>
+          <div className={styles.emailRow}>
+            <a href={`mailto:${profile.email}`} className={styles.emailLink}>
+              {profile.email}
+              <Icon name="arrowUpRight" size={22} strokeWidth={2} />
+            </a>
+            <CopyEmailButton className={styles.copyPill} showLabel />
+          </div>
         </Reveal>
 
         <div className={styles.blocks}>
@@ -61,10 +67,10 @@ export function Contact() {
 
         <ul className={styles.links}>
           {links.map((link, i) => (
-            <motion.li key={link.icon} {...reveal(i * 0.06)}>
+            <motion.li key={link.icon} className={styles.linkItem} {...reveal(i * 0.06)}>
               <a
                   href={link.href}
-                  className={styles.linkCard}
+                  className={`${styles.linkCard} ${link.copyable ? styles.linkCardCopyable : ''}`}
                   {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
                 >
                   <span className={styles.linkMain}>
@@ -79,6 +85,8 @@ export function Contact() {
                   <Icon name="arrowUpRight" size={18} strokeWidth={2} className={styles.linkArrow} />
                   {link.external && <span className="sr-only">{t.a11y.newTab}</span>}
                 </a>
+              {/* Fica fora do link: um botão dentro de <a> não é HTML válido. */}
+              {link.copyable && <CopyEmailButton className={styles.copyIcon} />}
             </motion.li>
           ))}
           <motion.li {...reveal(links.length * 0.06)}>

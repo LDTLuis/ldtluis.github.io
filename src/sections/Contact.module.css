@@ -172,6 +172,68 @@
   color: var(--subtle);
 }
 
+.linkItem {
+  position: relative;
+}
+
+/* O cartão do e-mail troca a seta pelo botão de copiar, que fica por cima dele. */
+.linkCardCopyable {
+  padding-right: 58px;
+}
+
+.linkCardCopyable .linkArrow {
+  display: none;
+}
+
+.copyIcon,
+.copyPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line-2);
+  background: var(--bg-2);
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--ease-out),
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.copyIcon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  transform: translateY(-50%);
+}
+
+.copyPill {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.copyIcon[data-copied],
+.copyPill[data-copied] {
+  border-color: var(--accent-line);
+  color: var(--accent);
+}
+
+.emailRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
 .linkArrow {
   flex-shrink: 0;
   color: var(--subtle);
@@ -190,21 +252,27 @@
     transform: translate(2px, -2px);
   }
 
-  .linkCard:hover {
+  /* Hover no item, não no link: o cartão continua erguido com o mouse sobre o botão de copiar.
+     O cartão do currículo não é um .linkItem: quem reage ao mouse são os botões PT/EN. */
+  .linkItem:hover .linkCard {
     transform: translateY(-4px);
     border-color: var(--line-3);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   }
 
-  .linkCard:hover .linkArrow {
+  .linkItem:hover .linkCard .linkArrow {
     color: var(--accent);
   }
 
-  /* O cartão do currículo não é um link: quem reage ao mouse são os botões PT/EN. */
-  .resumeCard:hover {
-    transform: none;
-    border-color: var(--line);
-    box-shadow: none;
+  .linkItem:hover .copyIcon {
+    transform: translateY(calc(-50% - 4px));
+  }
+
+  .copyIcon:hover,
+  .copyPill:hover {
+    border-color: var(--accent-line);
+    background: var(--accent-soft);
+    color: var(--accent);
   }
 
   .resumeLink:hover {
