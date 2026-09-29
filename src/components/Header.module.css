@@ -9,7 +9,7 @@
 }
 
 .solid {
-  background: rgba(10, 17, 14, 0.82);
+  background: rgba(7, 8, 8, 0.82);
   border-bottom-color: var(--line);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -57,7 +57,7 @@
   padding: 6px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(15, 25, 20, 0.75);
+  background: rgba(13, 14, 15, 0.75);
 }
 
 .navLink {
@@ -115,7 +115,7 @@
   padding: 0;
   border: 1px solid var(--line-3);
   border-radius: 12px;
-  background: rgba(15, 25, 20, 0.75);
+  background: rgba(13, 14, 15, 0.75);
   cursor: pointer;
 }
 

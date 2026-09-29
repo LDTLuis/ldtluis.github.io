@@ -14,7 +14,7 @@
   height: 700px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(ellipse, var(--accent-soft) 0%, transparent 65%);
+  background: radial-gradient(ellipse, var(--glow) 0%, transparent 65%);
   pointer-events: none;
 }
 

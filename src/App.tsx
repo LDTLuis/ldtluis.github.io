@@ -5,7 +5,6 @@ import { useI18n } from './i18n/LanguageProvider';
 import { About } from './sections/About';
 import { Contact } from './sections/Contact';
 import { Hero } from './sections/Hero';
-import { Marquee } from './sections/Marquee';
 import { Project } from './sections/Project';
 import { Skills } from './sections/Skills';
 
@@ -23,7 +22,6 @@ export default function App() {
         <Background />
         <Hero />
         <About />
-        <Marquee />
         <Skills />
         <Project />
       </main>

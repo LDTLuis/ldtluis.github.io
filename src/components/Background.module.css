@@ -7,16 +7,13 @@
   z-index: 0;
 }
 
-.grid {
+/* Estrelas brancas; somem embaixo para emendar no fundo da página sem corte. */
+.stars {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(230, 240, 234, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(230, 240, 234, 0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  background-position: center top;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+  color: var(--text);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
 }
 
 .glow {
@@ -27,18 +24,12 @@
   height: 900px;
   transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 65%);
+  background: radial-gradient(ellipse, var(--glow) 0%, transparent 65%);
 }
 
 @media (max-width: 767px) {
   .background {
     height: 900px;
-  }
-
-  .grid {
-    background-size: 40px 40px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 25%, #000 30%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 25%, #000 30%, transparent 100%);
   }
 
   .glow {

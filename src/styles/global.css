@@ -1,18 +1,18 @@
 :root {
-  --bg: #0a110e;
-  --bg-2: #0d1612;
-  --surface: #0f1914;
-  --surface-2: #13201a;
-  --line: #1d2c25;
-  --line-2: #22332b;
-  --line-3: #2a3b33;
-  --line-soft: #16231d;
+  --bg: #070808;
+  --bg-2: #0a0b0b;
+  --surface: #0d0e0f;
+  --surface-2: #121314;
+  --line: #1c1e1f;
+  --line-2: #232526;
+  --line-3: #2c2f30;
+  --line-soft: #151617;
 
-  --text: #e6f0ea;
-  --text-2: #c9d8d0;
-  --muted: #a7bdb2;
-  --subtle: #74897f;
-  --faint: #3a5046;
+  --text: #ececec;
+  --text-2: #cfd1d2;
+  --muted: #a5a8aa;
+  --subtle: #76797c;
+  --faint: #3d4043;
 
   --accent: #3ee08f;
   --accent-hover: #8cf5be;
@@ -20,13 +20,15 @@
   --accent-soft: rgba(62, 224, 143, 0.1);
   --accent-line: rgba(62, 224, 143, 0.35);
   --accent-glow: rgba(62, 224, 143, 0.2);
+  /* Brilho de ambiente neutro: o verde fica só nos destaques. */
+  --glow: rgba(255, 255, 255, 0.05);
 
   --font-display: 'Sora', system-ui, sans-serif;
   --font-body: 'Manrope', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --stripes: repeating-linear-gradient(135deg, #12201a 0 14px, #0f1b16 14px 28px);
+  --stripes: repeating-linear-gradient(135deg, #121314 0 14px, #0e0f10 14px 28px);
 
   color-scheme: dark;
 }

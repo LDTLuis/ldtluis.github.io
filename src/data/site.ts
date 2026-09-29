@@ -26,26 +26,31 @@ export const navItems: ReadonlyArray<{ id: string; key: keyof Dictionary['nav'] 
 ];
 
 export const skills = {
-  backend: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'JPA / Hibernate', 'REST APIs', 'OpenAPI', 'Maven'],
-  frontend: ['TypeScript', 'React', 'React Router', 'TanStack Query', 'Vite', 'HTML', 'CSS'],
-  data: ['PostgreSQL', 'Flyway', 'JUnit', 'Testcontainers'],
-  deploy: ['Git & GitHub', 'Railway', 'Cloudflare', 'Cloudinary'],
+  backend: [
+    'Java 21',
+    'Spring Boot',
+    'Spring Security',
+    'Spring Data JPA',
+    'Hibernate',
+    'REST APIs',
+    'JWT',
+    'OpenAPI / Swagger',
+    'JavaScript',
+    'Python',
+  ],
+  /** Acessibilidade (ARIA) é traduzida e fica em t.skills.a11y. */
+  frontend: ['TypeScript', 'React', 'Vite', 'React Router', 'TanStack Query', 'CSS Modules'],
+  integrations: ['Mercado Pago', 'Asaas', 'Google Calendar API', 'AWS SNS', 'Cloudinary', 'Resend', 'Webhooks'],
+  data: ['PostgreSQL', 'MySQL', 'Oracle', 'MongoDB', 'Flyway'],
+  devops: ['Docker', 'Maven', 'GitHub Actions', 'Dependabot', 'Railway'],
+  tools: ['Jira', 'TestRail', 'Scrum', 'Kanban'],
+  /** Grupos do card de QA; títulos em t.skills.qaGroups. Os testes manuais ficam em t.skills.qaManual, pois são traduzidos. */
+  qa: {
+    automation: ['Cypress', 'Selenium'],
+    unit: ['JUnit 5', 'Spring Boot Test', 'Testcontainers'],
+    api: ['Postman', 'Insomnia'],
+  },
 };
-
-export const marqueeItems = [
-  'Java',
-  'Spring Boot',
-  'TypeScript',
-  'React',
-  'PostgreSQL',
-  'Vite',
-  'Spring Security',
-  'TanStack Query',
-  'Flyway',
-  'Testcontainers',
-  'Railway',
-  'Git',
-];
 
 export const featuredProject = {
   name: 'Spa Casa Bali',

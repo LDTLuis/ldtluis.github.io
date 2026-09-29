@@ -1,11 +1,12 @@
-import { Icon } from '../components/Icon';
+import type { ReactNode } from 'react';
+import { Icon, type IconName } from '../components/Icon';
 import { Reveal } from '../components/Reveal';
 import { SectionHeading } from '../components/SectionHeading';
 import { skills } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
 import styles from './Skills.module.css';
 
-function Chips({ items, size }: { items: string[]; size?: 'lg' | 'sm' }) {
+function Chips({ items, size }: { items: readonly string[]; size?: 'lg' | 'sm' }) {
   const sizeClass = size ? `chip-${size}` : '';
   return (
     <ul className={`${styles.chips} ${size === 'sm' ? styles.chipsTight : ''}`}>
@@ -18,8 +19,47 @@ function Chips({ items, size }: { items: string[]; size?: 'lg' | 'sm' }) {
   );
 }
 
+/** Card de largura total ou dupla, com título e descrição ao lado do ícone. */
+function WideCard({ icon, title, text, children }: { icon: IconName; title: string; text: string; children: ReactNode }) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.cardHead}>
+        <span className={styles.iconBox}>
+          <Icon name={icon} size={22} />
+        </span>
+        <div>
+          <h3 className={styles.cardTitle}>{title}</h3>
+          <p className={styles.cardText}>{text}</p>
+        </div>
+      </div>
+      {children}
+    </article>
+  );
+}
+
+/** Card de uma coluna, com o ícone acima do título. */
+function SmallCard({ icon, title, children }: { icon: IconName; title: string; children: ReactNode }) {
+  return (
+    <article className={styles.card}>
+      <div className={`${styles.cardHead} ${styles.cardHeadStacked}`}>
+        <span className={styles.iconBox}>
+          <Icon name={icon} size={22} />
+        </span>
+        <h3 className={styles.cardTitleSm}>{title}</h3>
+      </div>
+      {children}
+    </article>
+  );
+}
+
 export function Skills() {
   const { t } = useI18n();
+  const qaGroups = [
+    { key: 'automation', items: skills.qa.automation },
+    { key: 'unit', items: skills.qa.unit },
+    { key: 'api', items: skills.qa.api },
+    { key: 'manual', items: t.skills.qaManual },
+  ] as const;
 
   return (
     <section id="competencias" className={styles.skills} aria-labelledby="competencias-titulo">
@@ -46,6 +86,7 @@ export function Skills() {
                   <p className={styles.featuredText}>{t.skills.backend}</p>
                 </div>
                 <Chips items={skills.backend} size="lg" />
+                <p className={styles.arch}>{t.skills.backendArch}</p>
               </div>
               <p className={styles.note}>
                 <Icon name="checkCircle" size={20} strokeWidth={2} className={styles.noteIcon} />
@@ -59,42 +100,59 @@ export function Skills() {
           </Reveal>
 
           <Reveal className={styles.wide} delay={0.08}>
-            <article className={styles.card}>
-              <div className={styles.cardHead}>
-                <span className={styles.iconBox}>
-                  <Icon name="code" size={22} />
-                </span>
-                <div>
-                  <h3 className={styles.cardTitle}>Front End</h3>
-                  <p className={styles.cardText}>{t.skills.frontend}</p>
-                </div>
-              </div>
-              <Chips items={skills.frontend} />
-            </article>
+            <WideCard icon="code" title="Front End" text={t.skills.frontend}>
+              <Chips items={[...skills.frontend, t.skills.a11y]} />
+            </WideCard>
+          </Reveal>
+
+          <Reveal className={styles.wide} delay={0.16}>
+            <WideCard icon="plug" title={t.skills.integrations} text={t.skills.integrationsText}>
+              <Chips items={skills.integrations} />
+            </WideCard>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <SmallCard icon="database" title={t.skills.data}>
+              <Chips items={skills.data} size="sm" />
+            </SmallCard>
           </Reveal>
 
           <Reveal delay={0.16}>
-            <article className={styles.card}>
-              <div className={`${styles.cardHead} ${styles.cardHeadStacked}`}>
-                <span className={styles.iconBox}>
-                  <Icon name="database" size={22} />
-                </span>
-                <h3 className={styles.cardTitleSm}>{t.skills.data}</h3>
-              </div>
-              <Chips items={skills.data} size="sm" />
-            </article>
+            <SmallCard icon="cloud" title={t.skills.devops}>
+              <Chips items={skills.devops} size="sm" />
+            </SmallCard>
           </Reveal>
 
           <Reveal delay={0.24}>
-            <article className={styles.card}>
-              <div className={`${styles.cardHead} ${styles.cardHeadStacked}`}>
-                <span className={styles.iconBox}>
-                  <Icon name="cloud" size={22} />
-                </span>
-                <h3 className={styles.cardTitleSm}>{t.skills.deploy}</h3>
+            <SmallCard icon="kanban" title={t.skills.tools}>
+              <Chips items={skills.tools} size="sm" />
+            </SmallCard>
+          </Reveal>
+
+          <Reveal delay={0.32}>
+            <SmallCard icon="globe" title={t.skills.languages}>
+              <ul className={styles.languages}>
+                {t.skills.languageItems.map(({ name, level }) => (
+                  <li key={name} className={styles.language}>
+                    <span>{name}</span>
+                    <span className={styles.level}>{level}</span>
+                  </li>
+                ))}
+              </ul>
+            </SmallCard>
+          </Reveal>
+
+          <Reveal className={styles.full} delay={0.08}>
+            <WideCard icon="shieldCheck" title={t.skills.qa} text={t.skills.qaText}>
+              <div className={styles.qaGroups}>
+                {qaGroups.map(({ key, items }) => (
+                  <div key={key} className={styles.qaGroup}>
+                    <h4 className={styles.qaGroupTitle}>{t.skills.qaGroups[key]}</h4>
+                    <Chips items={items} size="sm" />
+                  </div>
+                ))}
               </div>
-              <Chips items={skills.deploy} size="sm" />
-            </article>
+            </WideCard>
           </Reveal>
         </div>
       </div>
