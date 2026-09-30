@@ -9,7 +9,8 @@ import {
 import type { PointerEvent } from 'react';
 import { EmailMenu } from '../components/EmailMenu';
 import { Icon } from '../components/Icon';
-import { profile } from '../data/site';
+import { LocalClock } from '../components/LocalClock';
+import { featuredProject as project, profile } from '../data/site';
 import { useI18n } from '../i18n/LanguageProvider';
 import styles from './Hero.module.css';
 
@@ -57,22 +58,28 @@ export function Hero() {
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title">
       <div className={`container ${styles.grid}`}>
         <motion.div className={styles.text} variants={list} initial="hidden" animate="show">
-          <motion.div variants={item} className={styles.intro}>
-            <p className={styles.hello}>{t.hero.hello}</p>
-            <h1 id="hero-title" className={styles.name}>
-              Luis{' '}
-              <br />
-              Borges<span className={styles.dot}>.</span>
-            </h1>
+          <motion.div variants={item} className={styles.status}>
+            <p className={styles.badge}>
+              <span className={styles.pulse} aria-hidden="true" />
+              {t.hero.available}
+            </p>
+            <LocalClock className={styles.clock} />
           </motion.div>
 
-          <motion.p variants={item} className={styles.role}>
-            {t.hero.role} <span className={styles.accent}>Java</span> {t.hero.and}{' '}
-            <span className={styles.accent}>React</span>.
-          </motion.p>
+          <motion.div variants={item} className={styles.intro}>
+            <h1 id="hero-title" className={styles.name}>
+              {profile.name}
+              <span className={styles.dot}>.</span>
+            </h1>
+            <p className={styles.role}>
+              {t.hero.role} <span className={styles.sep}>&amp;</span> <span className={styles.nowrap}>{t.hero.qa}</span>
+            </p>
+          </motion.div>
 
           <motion.p variants={item} className={styles.lead}>
-            {t.hero.lead}
+            {t.hero.lead.map((segment, i) =>
+              segment.tone === 'strong' ? <strong key={i}>{segment.text}</strong> : <span key={i}>{segment.text}</span>,
+            )}
           </motion.p>
 
           <motion.div variants={item} className={styles.actions}>
@@ -100,32 +107,41 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.25, ease }}
           {...tilt.handlers}
         >
-          <motion.div className={styles.card} style={tilt.style}>
-            <div className={styles.cardTop}>
-              <span className={styles.monogram} aria-hidden="true">
-                {profile.initials}
-              </span>
-              <p className={styles.badge}>
-                <span className={styles.pulse} aria-hidden="true" />
-                {t.hero.available}
-              </p>
-            </div>
+          <motion.a href={project.caseStudyUrl} className={styles.card} style={tilt.style}>
+            {project.screenshots.desktop && (
+              <div className={styles.shot}>
+                <img src={project.screenshots.desktop} alt="" width={1440} height={900} />
+              </div>
+            )}
 
-            <dl className={styles.rows}>
-              <div className={styles.row}>
-                <dt>{t.hero.rows.role}</dt>
-                <dd>{t.hero.rows.roleValue}</dd>
+            <div className={styles.cardBody}>
+              <div className={styles.cardHead}>
+                <div>
+                  <p className={styles.eyebrow}>{t.hero.featured}</p>
+                  <p className={styles.projectName}>{project.name}</p>
+                </div>
+                <span className={styles.caseLink}>
+                  {t.project.caseStudy}
+                  <Icon name="arrowUpRight" size={16} strokeWidth={2} />
+                </span>
               </div>
-              <div className={styles.row}>
-                <dt>{t.hero.rows.stack}</dt>
-                <dd>{profile.mainStack}</dd>
-              </div>
-              <div className={styles.row}>
-                <dt>{t.hero.rows.location}</dt>
-                <dd>{t.hero.rows.locationValue}</dd>
-              </div>
-            </dl>
-          </motion.div>
+
+              <dl className={styles.stats}>
+                {t.hero.stats.map((stat) => (
+                  <div key={stat.label} className={styles.stat}>
+                    <dt>{stat.label}</dt>
+                    <dd>{stat.value}</dd>
+                  </div>
+                ))}
+              </dl>
+
+              <ul className={styles.tags}>
+                {project.stack.slice(0, 5).map((tech) => (
+                  <li key={tech}>{tech}</li>
+                ))}
+              </ul>
+            </div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
