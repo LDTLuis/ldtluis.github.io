@@ -12,7 +12,7 @@ type DevicePreviewProps = {
   className?: string;
 };
 
-/** Janela de navegador com o print desktop e um celular sobreposto com o print mobile. */
+/** Janela de navegador com o print desktop e, se houver print mobile, um celular sobreposto. */
 export function DevicePreview({ domain, desktop, mobile, label, className = '' }: DevicePreviewProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -21,7 +21,7 @@ export function DevicePreview({ domain, desktop, mobile, label, className = '' }
   const phoneY = useTransform(scrollYProgress, [0, 1], [48, -48]);
 
   return (
-    <div ref={ref} className={`${styles.preview} ${className}`}>
+    <div ref={ref} className={`${styles.preview} ${mobile ? '' : styles.solo} ${className}`}>
       <div className={styles.browser}>
         <div className={styles.browserBar}>
           <span className={styles.dots} aria-hidden="true">
@@ -31,7 +31,7 @@ export function DevicePreview({ domain, desktop, mobile, label, className = '' }
           </span>
           <span className={styles.url}>
             <Icon name="lock" size={12} strokeWidth={2} />
-            {domain}
+            <span className={styles.urlText}>{domain}</span>
           </span>
         </div>
         <div className={styles.screen}>
@@ -59,19 +59,13 @@ export function DevicePreview({ domain, desktop, mobile, label, className = '' }
         </div>
       </div>
 
-      <motion.div className={styles.phone} style={reduceMotion ? undefined : { y: phoneY }}>
-        <div className={styles.phoneScreen}>
-          {mobile ? (
+      {mobile && (
+        <motion.div className={styles.phone} style={reduceMotion ? undefined : { y: phoneY }}>
+          <div className={styles.phoneScreen}>
             <img src={mobile} alt={`${label} · Mobile`} loading="lazy" />
-          ) : (
-            <>
-              <span className={styles.notch} aria-hidden="true" />
-              <div className={styles.phoneHero}>Mobile</div>
-              <span className={styles.phoneCta} aria-hidden="true" />
-            </>
-          )}
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

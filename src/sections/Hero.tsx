@@ -121,7 +121,7 @@ export function Hero() {
                   <p className={styles.projectName}>{project.name}</p>
                 </div>
                 <span className={styles.caseLink}>
-                  {t.project.caseStudy}
+                  {t.project.actions.caseStudy}
                   <Icon name="arrowUpRight" size={16} strokeWidth={2} />
                 </span>
               </div>

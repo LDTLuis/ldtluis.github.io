@@ -49,13 +49,35 @@ export const skills = {
   tools: ['Jira', 'TestRail', 'Scrum', 'Kanban'],
   /** Grupos do card de QA; títulos em t.skills.qaGroups. Os testes manuais ficam em t.skills.qaManual, pois são traduzidos. */
   qa: {
-    automation: ['Cypress', 'Selenium'],
+    automation: ['Playwright', 'Cypress', 'Selenium'],
     unit: ['JUnit 5', 'Spring Boot Test', 'Testcontainers'],
     api: ['Postman', 'Insomnia'],
   },
 };
 
+/** Botão do card de projeto; o texto fica em t.project.actions[label]. */
+export type ProjectAction = {
+  label: keyof Dictionary['project']['actions'];
+  href: string;
+  variant: 'primary' | 'outline';
+  /** Abre em nova aba, com o aviso para leitores de tela. */
+  external?: boolean;
+};
+
+export type ProjectItem = {
+  /** Chave dos textos do projeto em t.project.items. */
+  id: keyof Dictionary['project']['items'];
+  name: string;
+  year: number;
+  domain: string;
+  stack: string[];
+  screenshots: { desktop: string | null; mobile: string | null };
+  actions: ProjectAction[];
+};
+
+/** Projeto principal: aparece no início e tem estudo de caso próprio. */
 export const featuredProject = {
+  id: 'casaBali' as const,
   name: 'Spa Casa Bali',
   url: 'https://spacasabali.com',
   domain: 'spacasabali.com',
@@ -72,6 +94,34 @@ export const featuredProject = {
     { key: 'club', src: `${base}projetos/spa-casa-bali-club-de-horas.webp` },
   ] as const,
 };
+
+const qaRepo = 'https://github.com/LDTLuis/verzel-store-qa';
+
+/** Cards da seção de projetos, na ordem em que aparecem. */
+export const projects: ProjectItem[] = [
+  {
+    ...featuredProject,
+    actions: [
+      { label: 'visit', href: featuredProject.url, variant: 'primary', external: true },
+      { label: 'caseStudy', href: featuredProject.caseStudyUrl, variant: 'outline' },
+    ],
+  },
+  {
+    id: 'qaEcommerce',
+    name: 'QA de e-commerce — Cupom e frete grátis',
+    year: 2026,
+    domain: displayUrl(qaRepo),
+    stack: ['Playwright', 'TypeScript', 'Gherkin', 'Postman', 'GitHub Actions'],
+    screenshots: {
+      desktop: `${base}projetos/qa-ecommerce-desktop.webp`,
+      mobile: null,
+    },
+    actions: [
+      { label: 'repository', href: qaRepo, variant: 'primary', external: true },
+      { label: 'bugs', href: `${qaRepo}/blob/main/docs/04-bugs.md`, variant: 'outline', external: true },
+    ],
+  },
+];
 
 /** "https://github.com/usuario" → "github.com/usuario" */
 export function displayUrl(url: string): string {

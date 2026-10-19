@@ -39,12 +39,21 @@
   justify-content: center;
   gap: 8px;
   width: min(320px, 60%);
+  min-width: 0;
   height: 28px;
   border-radius: 8px;
   background: var(--surface);
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--subtle);
+}
+
+/* Endereços longos (ex.: repositório no GitHub) não quebram linha. */
+.urlText {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .screen {
@@ -92,8 +101,7 @@
   background: var(--line);
 }
 
-.wfHero,
-.phoneHero {
+.wfHero {
   flex-grow: 1;
   display: grid;
   place-items: center;
@@ -148,30 +156,22 @@
   background: var(--stripes);
 }
 
-.notch {
-  width: 30%;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--line-2);
+/* Sem print mobile: só a janela do navegador, na largura toda. */
+.solo {
+  padding-bottom: 0;
 }
 
-.phoneHero {
+.solo .browser {
   width: 100%;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-}
-
-.phoneCta {
-  width: 100%;
-  height: 44px;
-  border: 1px solid var(--accent-line);
-  border-radius: 12px;
-  background: var(--accent-soft);
 }
 
 @media (max-width: 639px) {
   .preview {
     padding-bottom: 40px;
+  }
+
+  .solo {
+    padding-bottom: 0;
   }
 
   .browser {
@@ -246,15 +246,5 @@
     gap: 8px;
     padding: 10px 8px;
     border-radius: 17px;
-  }
-
-  .phoneHero {
-    font-size: 9px;
-    border-radius: 10px;
-  }
-
-  .phoneCta {
-    height: 22px;
-    border-radius: 7px;
   }
 }

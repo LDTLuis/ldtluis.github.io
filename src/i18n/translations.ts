@@ -100,27 +100,49 @@ const pt = {
       api: 'Testes de API',
       manual: 'Testes manuais',
     },
-    qaManual: ['Manual', 'Funcional', 'Regressão'],
+    qaManual: ['Manual', 'Funcional', 'Regressão', 'Exploratório'],
   },
   project: {
     eyebrow: 'Portfólio',
-    title: 'Projeto em destaque',
-    description: 'Solução desenvolvida de ponta a ponta e atualmente em produção.',
-    meta: 'Aplicação web',
-    subtitle: 'Plataforma de agendamento online, vale-presente e pagamentos para uma rede de spas',
-    visit: 'Acessar site',
-    caseStudy: 'Estudo de caso',
-    screenshot: 'Print do site',
+    title: 'Projetos',
+    description: 'Projetos desenvolvidos e testados de ponta a ponta.',
     challenge: 'Desafio',
-    challengeText:
-      'Digitalizar o processo de agendamento de uma rede de spas com múltiplas unidades, catálogo de serviços e horários sincronizados com o sistema de gestão já utilizado pela equipe.',
     solution: 'Solução',
-    solutionItems: [
-      'Agendamento online por unidade',
-      'Venda de vale-presente e pagamentos',
-      'Notificações automáticas por e-mail',
-    ],
     tech: 'Tecnologias',
+    actions: {
+      visit: 'Acessar site',
+      caseStudy: 'Estudo de caso',
+      repository: 'Ver repositório',
+      bugs: 'Ver bugs',
+    },
+    /** Textos de cada card; as chaves batem com `id` em projects (src/data/site.ts). */
+    items: {
+      casaBali: {
+        meta: 'Aplicação web',
+        subtitle: 'Plataforma de agendamento online, vale-presente e pagamentos para uma rede de spas',
+        screenshot: 'Print do site',
+        challengeText:
+          'Digitalizar o processo de agendamento de uma rede de spas com múltiplas unidades, catálogo de serviços e horários sincronizados com o sistema de gestão já utilizado pela equipe.',
+        solutionItems: [
+          'Agendamento online por unidade',
+          'Venda de vale-presente e pagamentos',
+          'Notificações automáticas por e-mail',
+        ],
+      },
+      qaEcommerce: {
+        meta: 'Teste técnico de QA',
+        subtitle:
+          'Validação de uma entrega de cupom de desconto e frete grátis em uma loja virtual, da documentação à automação',
+        screenshot: 'Código da automação com Playwright',
+        challengeText:
+          'Validar uma entrega a partir da documentação e dos critérios de aceite, cobrindo interface e API, e decidir se ela podia ir para produção.',
+        solutionItems: [
+          '31 casos de teste em Gherkin e 9 sessões exploratórias',
+          '4 bugs reportados com evidências, 2 de severidade alta',
+          '69 testes automatizados de interface e API no GitHub Actions',
+        ],
+      },
+    },
     more: 'Novos projetos em desenvolvimento',
     follow: 'Acompanhe no GitHub',
   },
@@ -417,23 +439,44 @@ const en: Dictionary = {
       api: 'API testing',
       manual: 'Manual testing',
     },
-    qaManual: ['Manual', 'Functional', 'Regression'],
+    qaManual: ['Manual', 'Functional', 'Regression', 'Exploratory'],
   },
   project: {
     eyebrow: 'Portfolio',
-    title: 'Featured project',
-    description: 'An end-to-end solution, currently live in production.',
-    meta: 'Web application',
-    subtitle: 'Online booking, gift card and payment platform for a spa chain',
-    visit: 'Visit site',
-    caseStudy: 'Case study',
-    screenshot: 'Site screenshot',
+    title: 'Projects',
+    description: 'Projects built and tested end to end.',
     challenge: 'Challenge',
-    challengeText:
-      'Bring the booking process of a multi-location spa chain online, with a service catalog and time slots synced with the management system the team already used.',
     solution: 'Solution',
-    solutionItems: ['Online booking by location', 'Gift card sales and payments', 'Automated email notifications'],
     tech: 'Technologies',
+    actions: {
+      visit: 'Visit site',
+      caseStudy: 'Case study',
+      repository: 'View repository',
+      bugs: 'View bugs',
+    },
+    items: {
+      casaBali: {
+        meta: 'Web application',
+        subtitle: 'Online booking, gift card and payment platform for a spa chain',
+        screenshot: 'Site screenshot',
+        challengeText:
+          'Bring the booking process of a multi-location spa chain online, with a service catalog and time slots synced with the management system the team already used.',
+        solutionItems: ['Online booking by location', 'Gift card sales and payments', 'Automated email notifications'],
+      },
+      qaEcommerce: {
+        meta: 'QA technical assessment',
+        subtitle:
+          'Validation of a discount coupon and free shipping release in an online store, from documentation to automation',
+        screenshot: 'Playwright automation code',
+        challengeText:
+          'Validate a release against its documentation and acceptance criteria, covering both UI and API, and decide whether it was ready for production.',
+        solutionItems: [
+          '31 Gherkin test cases and 9 exploratory sessions',
+          '4 bugs reported with evidence, 2 high severity',
+          '69 automated UI and API tests on GitHub Actions',
+        ],
+      },
+    },
     more: 'New projects in progress',
     follow: 'Follow along on GitHub',
   },
